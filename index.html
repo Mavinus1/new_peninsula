@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Restaurant Menu</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f6f6f6;
+    }
+
+    header {
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 15px;
+    }
+
+    .section h2 {
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+    }
+
+    .item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 15px 0;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        transition: transform 0.2s;
+    }
+
+    .item:hover {
+        transform: scale(1.01);
+    }
+
+    .item img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+    }
+
+    .item-body {
+        padding: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .name {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .price {
+        font-weight: bold;
+    }
+
+    /* MODAL */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .modal-content {
+        background: white;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .modal img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .close {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+        .item img {
+            height: 180px;
+        }
+
+        .modal img {
+            height: 180px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>New Peninsula</h1>
+    <p>The updated, better, fancier menu. Forget the Italian stuff, we only have the meticulously picked best foods of all time</p>
+</header>
+
+<div class="container">
+
+    <div class="section">
+        <h2>Menu</h2>
+
+        <!-- 1 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="img/sushi.jpg">
+            <div class="item-body">
+                <div class="name">The Thousands Waves of a Thousand Rising Suns Feast</div>
+                <div class="price">$99999999999</div>
+            </div>
+            <div class="desc" style="display:none;">Sushi, sushi, sushi, sushi... Sushi nhar w sushi lel w maghroume fiyon bas la haram ma tekliyon bedik tetjawaziyon ba3den</div>
+        </div>
+
+        <!-- 2 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="img/shrimp.jpg">
+            <div class="item-body">
+                <div class="name">Golden Pearl of The Royal Abysses shaded in Rose Élysée</div>
+                <div class="price">$10<sup>100000</sup></div>
+            </div>
+            <div class="desc" style="display:none;">Ok 3a rase w 3ayne ba3rif awwal ma tshufe shi fiyo shrimp bi mat3am btotolbe meno bas hal marra ghayre shwe bsharafik</div>
+        </div>
+
+        <!-- 3 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="img/sea_food.jpg">
+            <div class="item-body">
+                <div class="name">Poseidon's Sovereign Deep Sea Artisanal Constellation</div>
+                <div class="price">$e<sup>shi malyoun</sup></div>
+            </div>
+            <div class="desc" style="display:none;">Waw waw sea food shu taybin l sea food, ma addouke l shrimps bedik kamen lobster w... uh eh w khbar ktir gher. L meshkle bshek fike tekle kel ho fa le2e gher shi</div>
+        </div>
+
+        <!-- 4 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe">
+            <div class="item-body">
+                <div class="name">Delicious Combo of a Time Forever Gone</div>
+                <div class="price">460'000 L.L.</div>
+            </div>
+            <div class="desc" style="display:none;">Atyab combo 3anna bel mahal bas saraha ha kharej shi yetekal sob l se3a 10 AM msln aw 12:15 AM bra2ye ya3ne</div>
+        </div>
+
+        <!-- 5 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+            <div class="item-body">
+                <div class="name">Ingenious Mixture of a Cow's descendance and a Sugary Savor</div>
+                <div class="price">Not for sale</div>
+            </div>
+            <div class="desc" style="display:none;">Nevermind hayda huwwe atyab combo 3anna bel mahal, secret recipe jebneha men source super secret mamnou3 ta3rfe fiya</div>
+        </div>
+
+        <!-- 6 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="img/cocktail.jpg">
+            <div class="item-body">
+                <div class="name">Avocado Cocktail</div>
+                <div class="price">$10</div>
+            </div>
+            <div class="desc" style="display:none;">"Dessert" al. Khayye shu dessert drink ha min bi oul dessert w byeje bi fakir bi hek shi</div>
+        </div>
+
+        <!-- 7 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="img/pain_perdu.jpg">
+            <div class="item-body">
+                <div class="name">Pain Perdu</div>
+                <div class="price">$8</div>
+            </div>
+            <div class="desc" style="display:none;">Sorry kenna habeyna njeblik menno bs daya3ne</div>
+        </div>
+
+        <!-- 8 -->
+        <div class="item" onclick="openModal(this)">
+            <img src="img/R.jpg">
+            <div class="item-body">
+                <div class="name">"R"</div>
+                <div class="price">FREE</div>
+            </div>
+            <div class="desc" style="display:none;">Oho mbayan shi tayyib hayda. Yalla go ahead, 3aytilo lal waiter</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+    <div class="modal-content">
+        <img id="modal-img">
+        <div class="modal-body">
+            <span class="close" onclick="closeModal(event)">✖</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-desc"></p>
+            <p id="modal-price"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal(item) {
+    document.getElementById("modal-img").src = item.querySelector("img").src;
+    document.getElementById("modal-title").innerText = item.querySelector(".name").innerText;
+    document.getElementById("modal-price").innerText = item.querySelector(".price").innerText;
+    document.getElementById("modal-desc").innerText = item.querySelector(".desc").innerText;
+
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(e) {
+    if (e.target.id === "modal" || e.target.classList.contains("close")) {
+        document.getElementById("modal").style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
